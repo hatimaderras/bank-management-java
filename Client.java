@@ -168,4 +168,29 @@ public class Client {
 
         }
     }
+    public static void deleteClient() {
+        System.out.print("Enter student ID to delete: ");
+        int id = scanner.nextInt();
+        for (Client c : client) {
+            if (c.getId() == id) {
+                client.remove(c);
+                break;
+            }
+        }
+        System.out.print("\n Student not found ! ");
+    }
+
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+}
 
