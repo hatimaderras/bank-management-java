@@ -68,4 +68,14 @@ public class Client {
     public void setAddress(String address) {
         this.address = address;
     }
+    public static boolean isValidPhoneNumber(String phoneNumber) {
+        String regex = "^(?:06|07|05)[0-9]{8}$";
+        return Pattern.matches(regex, phoneNumber);
+    }
+
+    private static boolean isValidEmail(String email) {
+        String regex = "^[\\w.-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+
+        return Pattern.matches(regex, email);
+    }
 
