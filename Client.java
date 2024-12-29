@@ -116,5 +116,56 @@ public class Client {
 
 
     }
+    public static void displayClient() {
+        System.out.println(" ------list of Clients -----");
+        for (Client c : client) {
+            System.out.println(c);
+            client.toString();
+        }
+    }
 
+    public static void updateClient() {
+        boolean valid = false;
+        System.out.print("Enter Client ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        for (Client c : client) {
+            if (c.getId() == id) {
+                System.out.print("1-Update Name \n" + "2-Update email " + "3-Update Phone number \n" + "4-Update Address \n" + "   Enter your choice     ");
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter Client new First Name: ");
+                        c.setFirstName(scanner.nextLine());
+                        System.out.print("Enter Client new Last Name: ");
+                        c.setLastName(scanner.nextLine());
+                        break;
+
+                    case 2:
+                        while (!valid) {
+                            System.out.print("Enter Client new Email: ");
+                            c.setEmail(scanner.nextLine());
+                            valid = isValidEmail(c.email);
+                        }
+                        break;
+
+                    case 3:
+                        while (!valid) {
+                            System.out.print("Enter Client new Phone Number: ");
+                            c.setPhoneNumber(scanner.nextLine());
+                            valid = isValidPhoneNumber(c.phoneNumber);
+                        }
+                        break;
+                    case 4:
+                        System.out.print("Enter Client new Address: ");
+                        c.setAddress(scanner.nextLine());
+                        break;
+                    default:
+                        System.out.println("Invalid choice");
+                }
+            }
+
+        }
+    }
 
