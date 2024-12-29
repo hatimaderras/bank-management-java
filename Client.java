@@ -78,4 +78,43 @@ public class Client {
 
         return Pattern.matches(regex, email);
     }
+    public static void addClient() {
+        boolean valid = false;
+
+        System.out.print("Enter Client ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        for(Client c : client) {
+            if(c.getId() == id) {
+                System.out.println("This Id is already in use! ");
+                return;
+            }
+        }
+        System.out.print("Enter Client First Name: ");
+        String firstName = scanner.next();
+        scanner.nextLine();
+        System.out.print("Enter Client Last Name: ");
+        String lastName = scanner.next();
+        scanner.nextLine();
+
+        String phoneNumber = null, email = null;
+        while (!valid) {
+            System.out.print("Enter Client Email: ");
+            email = scanner.next();
+            scanner.nextLine();
+            System.out.print("Enter Client Phone Number: ");
+            phoneNumber = scanner.next();
+            scanner.nextLine();
+            valid = isValidEmail(email) && isValidPhoneNumber(phoneNumber);
+        }
+        System.out.print("Enter Client Address: ");
+        String address = scanner.next();
+        scanner.nextLine();
+
+        client.add( new Client(id, firstName, lastName, email, phoneNumber, address));
+
+
+
+    }
+
 
